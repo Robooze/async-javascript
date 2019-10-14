@@ -41,7 +41,9 @@ function createPost(post) {
 const promise1 = Promise.resolve("I'm promise 1");
 const promise2 = "I'm promise 2";
 const promise3 = new Promise((resolve, reject)=> setTimeout(resolve, 2000, "Goodbye"));
+// fetch API returns a promise
+const promise4 = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json() );
 
-Promise.all([promise1, promise2, promise3]).then(values => console.log(values));
+Promise.all([promise1, promise2, promise3, promise4]).then(values => console.log(values));
 
 console.log("I'm coded after a Promise. Let's see if we work asynchronously!");
