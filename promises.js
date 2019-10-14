@@ -20,10 +20,10 @@ function createPost(post) {
         setTimeout(() => {
             posts.push(post);
 
-            const error = true;
+            const error = false;
 
             if (!error) {
-                resolve("Worked!");
+                resolve();
             } else {
                 reject('Error: something went wrong in creating a post');
             }
@@ -31,8 +31,17 @@ function createPost(post) {
     });
 }
 
-createPost({ title: "Post Three", body: "This is the third post" })
-    .then(getPosts)  // if the result of createPost promise is resolve THEN do this.
-    .catch(err => console.log(err));  // if the result of createPost promise is reject, print the reject error defined above
+// "A Promise is made..."
+//
+// createPost({ title: "Post Three", body: "This is the third post" })
+//     .then(getPosts)  // if the result of createPost promise is resolve THEN do this.
+//     .catch(err => console.log(err));  // if the result of createPost promise is reject, print the reject error defined above
+
+// Promise.all
+const promise1 = Promise.resolve("I'm promise 1");
+const promise2 = "I'm promise 2";
+const promise3 = new Promise((resolve, reject)=> setTimeout(resolve, 2000, "Goodbye"));
+
+Promise.all([promise1, promise2, promise3]).then(values => console.log(values));
 
 console.log("I'm coded after a Promise. Let's see if we work asynchronously!");
