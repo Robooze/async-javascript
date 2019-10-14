@@ -50,15 +50,36 @@ function createPost(post) {
 // init();
 
 // Async / Await with fetch from FETCH API
-async function fetchUsers() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+// async function fetchUsers() {
+//     const res = await fetch('https://jsonplaceholder.typicode.com/users');
+//
+//     const data = await res.json();
+//
+//     console.log(data);
+// }
+//fetchUsers();
+
+async function fetchPOST() {
+
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+            title: 'foo',
+            body: 'bar',
+            userId: 1
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    });
 
     const data = await res.json();
 
     console.log(data);
+
 }
 
-fetchUsers();
+fetchPOST();
 
 // // Promise.all
 // const promise1 = Promise.resolve("I'm promise 1");
